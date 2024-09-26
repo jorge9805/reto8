@@ -3,12 +3,12 @@ from tkinter import messagebox
 
 def calculo_papa(func):
     def wrapper(*args, **kwargs):
-        total_ponderado = 0
+        total_notas_creditos = 0
         total_creditos = 0
         for nota, creditos in func(*args, **kwargs):
-            total_ponderado += nota * creditos
+            total_notas_creditos += nota * creditos
             total_creditos += creditos
-        return total_ponderado / total_creditos
+        return total_notas_creditos / total_creditos
     return wrapper
 
 def materias_y_creditos(materias):
@@ -24,10 +24,10 @@ def calcular_promedio(materias):
 def mostrar_felicitaciones():
     ventana = tk.Tk()
     ventana.withdraw() 
-    messagebox.showinfo("¡Felicitaciones Has obtenido matrícula gratis!")
+    messagebox.showinfo("¡Felicitaciones, Has obtenido matrícula gratis!")
     ventana.quit()
 
-# Diccionario con las materias, las notas y los créditos
+
 materias = {
     'Elementos de computadores': (4.9, 3),
     'Integral': (4.5, 4),
@@ -43,10 +43,10 @@ materias = {
     'POO': (5.0, 3),
 }
 
-# Cálculo del promedio ponderado
+
 papa = calcular_promedio(materias)
 print(f"Su papa es: {papa}")
 
-# Verificar si el promedio es mayor a 4.4 para mostrar la felicitación
+
 if papa >= 4.35:
     mostrar_felicitaciones()
